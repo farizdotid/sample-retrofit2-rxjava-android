@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Sample Retrofit Rx</string>
+    <string name="username_github">username github</string>
+</resources>
