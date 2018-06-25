@@ -75,7 +75,6 @@ public class ReposAdapter extends
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-
         }
     }
 

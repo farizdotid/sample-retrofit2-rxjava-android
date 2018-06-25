@@ -17,6 +17,13 @@ import retrofit2.http.Path;
  */
 public interface BaseApiService {
 
+    /*
+    Fungsi @Path disini adalah untuk mengisi value yang sudah kita set.
+    Contoh : {username} disini nantinya akan diisi dengan kebutuhan yang disesuaikan.
+
+    Observable disini ialah dari RxJava. Karena pada contoh disini kita akan menggabungkan
+    Retrofit dengan RxJava.
+     */
     @GET("users/{username}/repos")
     Observable<List<ResponseRepos>> requestRepos(@Path("username") String username);
 }

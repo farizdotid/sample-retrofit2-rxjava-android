@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
         mApiService = UtilsApi.getAPIService();
 
+        /*
+        inisialisasi adapter dan recyclerview
+         */
         mRepoAdapter = new ReposAdapter(this, repoList, null);
         rvRepos.setLayoutManager(new LinearLayoutManager(this));
         rvRepos.setItemAnimator(new DefaultItemAnimator());
@@ -60,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
         etUsername.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                /*
+                EditorInfo.IME_ACTION_SEARCH ini berfungsi untuk men-set keyboard kamu
+                agar enter di keyboard menjadi search.
+                 */
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     String username = etUsername.getText().toString();
                     requestRepos(username);
@@ -70,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /*
+    Fungsi untuk berkomunikasi dengan API Server menggunakan library Retrofit dan RxJava.
+     */
     private void requestRepos(String username) {
         pbLoading.setVisibility(View.VISIBLE);
 
@@ -84,7 +94,11 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(List<ResponseRepos> responseRepos) {
-                        Log.i("debug", "onNext: responseRepos >>> " + responseRepos.size());
+                        /*
+                        onNext disini ketika data sudah masuk dan biasanya kita memasukan data API
+                        ke lokal ataupun sesuai kebutuhan kamu. Di contoh ini data dari API Server dimasukan
+                        dalam List.
+                         */
                         for (int i = 0; i < responseRepos.size(); i++) {
                             String name = responseRepos.get(i).getName();
                             String description = responseRepos.get(i).getDescription();
