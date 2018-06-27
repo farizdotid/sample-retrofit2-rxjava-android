@@ -31,6 +31,9 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
+    /*
+    inisialisasi komponen komponen yang sudah kita buat di layout activity_main.xml
+     */
     @BindView(R.id.pbLoading)
     ProgressBar pbLoading;
     @BindView(R.id.rvRepos)
@@ -38,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.etUsername)
     EditText etUsername;
 
+    /*
+    inisialisasi file pembantu yang sudah kita buat.
+    BaseApiService : untuk persoalan request API
+    ReposAdapter : untuk kebutuhan adapter RecyclerView
+     */
     BaseApiService mApiService;
     ReposAdapter mRepoAdapter;
 
@@ -97,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                         /*
                         onNext disini ketika data sudah masuk dan biasanya kita memasukan data API
                         ke lokal ataupun sesuai kebutuhan kamu. Di contoh ini data dari API Server dimasukan
-                        dalam List.
+                        dalam List repoList.
                          */
                         for (int i = 0; i < responseRepos.size(); i++) {
                             String name = responseRepos.get(i).getName();
